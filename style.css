@@ -180,15 +180,16 @@ img {
 }
 
 .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 7px);
 }
 
 .nav-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
 }
 
 .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(5px, -7px);
 }
 
 /* ===== Hero Section ===== */
@@ -1140,26 +1141,43 @@ img {
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: 999;
         background: rgba(10, 10, 15, 0.98);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 32px;
+        gap: 40px;
         transform: translateX(100%);
-        transition: transform 0.4s ease;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-links.open {
         transform: translateX(0);
     }
 
+    /* Hide underline animations on mobile — looks wrong at large size */
+    .nav-links a::after {
+        display: none;
+    }
+
     .nav-links a {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    /* Re-style the CTA button to fit neatly in the mobile menu */
+    .nav-links .nav-cta {
+        font-size: 1rem !important;
+        padding: 12px 32px !important;
     }
 
     .nav-toggle {
         display: flex;
+        z-index: 1001;
+        position: relative;
     }
 
     .hero {

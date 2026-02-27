@@ -74,18 +74,47 @@ const navToggle = document.getElementById('navToggle');
 const navLinksEl = document.getElementById('navLinks');
 
 navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navLinksEl.classList.toggle('open');
-    document.body.style.overflow = navLinksEl.classList.contains('open') ? 'hidden' : '';
+    const isOpen = navLinksEl.classList.toggle('open');
+    navToggle.classList.toggle('active', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
-// Close mobile menu on link click
+// Close menu when a link is clicked, then smooth-scroll
 navLinksEl.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        const isMobileOpen = navLinksEl.classList.contains('open');
+
+        // Always close menu first
         navLinksEl.classList.remove('open');
+        navToggle.classList.remove('active');
         document.body.style.overflow = '';
+
+        // Smooth scroll to anchor
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                // Small delay on mobile so menu slide-out doesn't fight the scroll
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }, isMobileOpen ? 350 : 0);
+            }
+        }
     });
+});
+
+// Tap outside menu to close
+document.addEventListener('click', (e) => {
+    if (
+        navLinksEl.classList.contains('open') &&
+        !navLinksEl.contains(e.target) &&
+        !navToggle.contains(e.target)
+    ) {
+        navLinksEl.classList.remove('open');
+        navToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 });
 
 // ===== Scroll Reveal Animation =====
@@ -104,13 +133,13 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// ===== Smooth Scroll for all anchor links =====
+// ===== Smooth Scroll (desktop — mobile handled in menu click above) =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    // Skip links inside the nav; they are handled by the menu close logic above
+    if (anchor.closest('#navLinks')) return;
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
