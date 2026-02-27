@@ -143,3 +143,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// ===== CV Download Dropdown =====
+const cvDropdownToggle = document.getElementById('cvDropdownToggle');
+const cvDropdownMenu = document.getElementById('cvDropdownMenu');
+
+if (cvDropdownToggle && cvDropdownMenu) {
+    cvDropdownToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = cvDropdownMenu.classList.toggle('open');
+        cvDropdownToggle.classList.toggle('open', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!cvDropdownToggle.contains(e.target) && !cvDropdownMenu.contains(e.target)) {
+            cvDropdownMenu.classList.remove('open');
+            cvDropdownToggle.classList.remove('open');
+        }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            cvDropdownMenu.classList.remove('open');
+            cvDropdownToggle.classList.remove('open');
+        }
+    });
+}
