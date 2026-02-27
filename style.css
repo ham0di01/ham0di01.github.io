@@ -1226,6 +1226,15 @@ img {
 }
 
 @media (max-width: 768px) {
+
+    /* Remove backdrop-filter on mobile — it creates a CSS containing block
+       that traps position:fixed children (the menu) inside the 72px navbar */
+    .navbar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: #0a0a0f;
+    }
+
     .nav-links {
         position: fixed;
         top: var(--nav-height);
@@ -1233,17 +1242,18 @@ img {
         right: 0;
         bottom: 0;
         z-index: 1000;
-        /* Fully solid background — backdrop-filter is unreliable on mobile */
         background: #0a0a0f;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 40px;
+        /* flex-start + padding avoids links being clipped at the top when
+           content overflows a centered flex container */
+        justify-content: flex-start;
+        gap: 32px;
+        padding: 48px 24px;
+        overflow-y: auto;
         transform: translateX(100%);
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow-y: auto;
-        padding: 40px 24px;
     }
 
     .nav-links.open {
