@@ -148,11 +148,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const cvDropdownToggle = document.getElementById('cvDropdownToggle');
 const cvDropdownMenu = document.getElementById('cvDropdownMenu');
 
+function positionDropdown() {
+    const rect = cvDropdownToggle.getBoundingClientRect();
+    const menuWidth = cvDropdownMenu.offsetWidth || 160;
+    // Centre the menu below the toggle button
+    let left = rect.left + rect.width / 2 - menuWidth / 2;
+    // Keep it within the viewport
+    left = Math.max(8, Math.min(left, window.innerWidth - menuWidth - 8));
+    cvDropdownMenu.style.top  = (rect.bottom + 8) + 'px';
+    cvDropdownMenu.style.left = left + 'px';
+}
+
 if (cvDropdownToggle && cvDropdownMenu) {
     cvDropdownToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = cvDropdownMenu.classList.toggle('open');
         cvDropdownToggle.classList.toggle('open', isOpen);
+        if (isOpen) positionDropdown();
+    });
+
+    // Reposition on scroll/resize so it stays anchored to the button
+    window.addEventListener('scroll', () => {
+        if (cvDropdownMenu.classList.contains('open')) positionDropdown();
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+        if (cvDropdownMenu.classList.contains('open')) positionDropdown();
     });
 
     document.addEventListener('click', (e) => {
@@ -162,7 +182,7 @@ if (cvDropdownToggle && cvDropdownMenu) {
         }
     });
 
-    // Close dropdown on Escape key
+    // Close on Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             cvDropdownMenu.classList.remove('open');

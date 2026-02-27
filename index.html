@@ -75,14 +75,7 @@
                             <polyline points="6,9 12,15 18,9" />
                         </svg>
                     </button>
-                    <div class="cv-dropdown-menu" id="cvDropdownMenu">
-                        <a href="cv_en.pdf" download class="cv-dropdown-item">
-                            <span>&#127468;&#127463;</span><span>English</span>
-                        </a>
-                        <a href="cv_sv.pdf" download class="cv-dropdown-item">
-                            <span>&#127480;&#127466;</span><span>Swedish</span>
-                        </a>
-                    </div>
+
                 </div>
             </div>
             <div class="hero-stats animate-in">
@@ -538,6 +531,15 @@
             </div>
         </div>
     </footer>
+    <!-- CV dropdown rendered at body level to escape stacking contexts -->
+    <div class="cv-dropdown-menu" id="cvDropdownMenu">
+        <a href="cv_en.pdf" download class="cv-dropdown-item">
+            <span>&#127468;&#127463;</span><span>English</span>
+        </a>
+        <a href="cv_sv.pdf" download class="cv-dropdown-item">
+            <span>&#127480;&#127466;</span><span>Swedish</span>
+        </a>
+    </div>
     <script src="script.js"></script>
 </body>
 
