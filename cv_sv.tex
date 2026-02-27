@@ -1,0 +1,199 @@
+\documentclass[10pt,a4paper]{article}
+
+% Required Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Page Layout
+\geometry{
+    a4paper,
+    left=1.1cm,
+    right=1.1cm,
+    top=0.8cm,
+    bottom=0.8cm
+}
+
+% Colors
+\definecolor{primary}{RGB}{0, 70, 140}
+\definecolor{text}{RGB}{40, 40, 40}
+\definecolor{lighttext}{RGB}{100, 100, 100}
+
+% Hyperlink configuration
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    filecolor=primary,
+    urlcolor=primary,
+}
+
+% Section formatting
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}
+  {0em}
+  {}
+  [\vspace{-0.5em}\rule{\textwidth}{0.5pt}]
+
+\titlespacing*{\section}{0pt}{0.8ex plus 0.3ex minus .1ex}{0.4ex plus .1ex}
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{3pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{3pt}\item
+    \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2} \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-3pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
+
+% -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+
+\begin{document}
+
+\color{text}
+
+% Header with Photo
+\begin{center}
+\begin{minipage}{0.16\textwidth}
+\begin{tikzpicture}
+    \clip (0,0) circle (1.35cm);
+    \node at (0,0) {\includegraphics[width=2.9cm]{image.jpeg}};
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}{0.82\textwidth}
+    {\LARGE \textbf{MOHAMED AMER}} \\ \vspace{2pt}
+    {\large Data Scientist \& Machine Learning Engineer} \\ \vspace{4pt}
+    \small
+    \faIcon{envelope}~\href{mailto:mohamed_amer_01@protonmail.com}{mohamed\_amer\_01@protonmail.com} ~|~
+    \faIcon{phone}~+46~793016889 ~|~
+    \faIcon{map-marker-alt}~Halmstad,~Sverige ~|~
+    \faIcon{linkedin}~\href{https://www.linkedin.com/in/mohamed-amer-5a7a55255}{LinkedIn} ~|~
+    \faIcon{github}~\href{https://github.com/ham0di01}{GitHub} ~|~
+    \faIcon{globe}~\href{https://ham0di01.github.io/}{Hemsida}
+\end{minipage}
+\end{center}
+
+\vspace{3pt}
+
+% ----------- Professional Summary -----------
+\section{Sammanfattning}
+\vspace{2pt}
+\small{Data Scientist och Machine Learning Engineer med praktisk erfarenhet av att utveckla prediktiva modeller och optimera komplexa processer hos Volvo SML. Med goda kunskaper i Python, TensorFlow och PyTorch samt en gedigen bakgrund inom att tillämpa AI för att lösa verkliga logistik- och industriutmaningar.}
+\vspace{2pt}
+
+% ----------- Education -----------
+\section{Utbildning}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Högskolan i Halmstad}{Halmstad, Sverige}
+      {Masterexamen i Artificiell Intelligens}{Beräknas juni 2026}
+    \resumeSubheading
+      {Högskolan i Halmstad}{Halmstad, Sverige}
+      {Kandidatexamen i Datavetenskap}{Juni 2023}
+  \resumeSubHeadingListEnd
+
+% ----------- Work Experience -----------
+\section{Arbetslivserfarenhet}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Studentforskare}{Nov. 2024 -- Juni 2025}
+      {Volvo SML}{Göteborg, Sverige}
+      \resumeItemListStart
+        \resumeItem{Ingick i det operativa logistikteamet hos Volvo SML för att analysera och effektivisera komplexa försörjningskedjeprocesser.}
+        \resumeItem{Utvecklade och utvärderade prediktiva maskininlärningsmodeller för att optimera logistikflöden över storskaliga datamängder.}
+        \resumeItem{Samarbetade direkt med fältingenjörer för att omsätta datadrivna insikter till konkreta effektivitetsförbättringar.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+% ----------- Thesis Projects -----------
+\section{Forskningspublikationer}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\href{https://urn.kb.se/resolve?urn=urn:nbn:se:hh:diva-57027}{\textbf{Prediction Intervals for ML-driven Logistics}} $|$ \emph{Masteruppsats på Volvo SML}}{Nov. 2024 -- Juni 2025}
+          \resumeItemListStart
+            \resumeItem{Utvecklade efterfrågeprognosmodeller med prediktionsintervall för att förbättra lagerhanteringen.}
+            \resumeItem{Implementerade händelsedriven simulering och Beta-PERT-fördelningar, vilket minskade kostnader samtidigt som höga servicenivåer upprätthölls.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\href{https://urn.kb.se/resolve?urn=urn:nbn:se:hh:diva-51061}{\textbf{Room Booking and Access Control System}} $|$ \emph{Kandidatuppsats på Högskolan i Halmstad}}{Jan. 2023 -- Juni 2023}
+          \resumeItemListStart
+            \resumeItem{Byggde ett integrerat system för rumsbokningar och accesskontroll med NodeJS, Android Studio och PostgreSQL.}
+            \resumeItem{Implementerade säker Mobile BankID-autentisering och utvecklade mobilappar för att lösa bokningskonflikter och obehörig åtkomst.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+% ----------- Other Projects -----------
+\section{Övriga projekt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\href{https://github.com/ham0di01/chest-xray-classification}{\textbf{Chest X-Ray Classification}}}{}
+          \resumeItemListStart
+            \resumeItem{Utvecklade en CNN-modell med TensorFlow för medicinsk bildanalys.}
+            \resumeItem{Uppnådde en valideringsnoggrannhet på 92\%.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\href{https://github.com/ham0di01/mlops-forecasting-service}{\textbf{Spare-Parts Demand Forecasting}}}{}
+          \resumeItemListStart
+            \resumeItem{Byggde en komplett MLOps-pipeline med Prophet, LightGBM och FastAPI.}
+            \resumeItem{Implementerade ett komplett maskininlärningsflöde från indata till driftsättning för efterfrågeprognoser.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\href{https://github.com/ham0di01/pattern-finder}{\textbf{Pattern Finder -- Trading Patterns with Computer Vision}}}{}
+          \resumeItemListStart
+            \resumeItem{Utvecklade ett system med datorseende för att identifiera tekniska mönster i finansiella kursdiagram.}
+            \resumeItem{Implementerade matchning mot historisk kryptodata för att hitta liknande prisscenarier.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+% ----------- Technical Skills -----------
+\section{Tekniska färdigheter}
+ \begin{itemize}[leftmargin=0.0in, label={}]
+    \small{\item{
+     \textbf{Språk}{: Python, Java, JavaScript, C, SQL, MATLAB} \\
+     \textbf{Maskininlärning \& Data}{: TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy} \\
+     \textbf{Generativ AI \& LLM:er}{: RAG, Prompt Engineering, Claude Code, GenAI-arkitekturer} \\
+     \textbf{MLOps \& Infrastruktur}{: CI/CD, Docker, Git, REST API:er, Cloud-plattformar} \\
+     \textbf{Kärnkoncept}{: Avancerad OOP, Datastrukturer \& Algoritmer, Statistisk modellering}
+    }}
+ \end{itemize}
+
+% ----------- Languages -----------
+\section{Språk \& Referenser}
+ \begin{itemize}[leftmargin=0.0in, label={}]
+    \small{\item{
+     \textbf{Språk}{: Svenska (Modersmål), Engelska (Avancerad C1), Arabiska (Modersmål)} \\
+     \textbf{Referenser}{: Lämnas på begäran.}
+    }}
+ \end{itemize}
+
+\end{document}
