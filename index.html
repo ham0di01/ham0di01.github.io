@@ -63,14 +63,27 @@
                         <path d="M7 17l9.2-9.2M17 17V7.8H7.8" />
                     </svg></a>
                 <a href="#contact" class="btn btn-secondary"><span>Contact Me</span></a>
-                <a href="cv.pdf" download class="btn btn-ghost">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                        <polyline points="7,10 12,15 17,10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    <span>Download CV</span>
-                </a>
+                <div class="cv-dropdown">
+                    <button class="btn btn-ghost cv-dropdown-toggle" id="cvDropdownToggle">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7,10 12,15 17,10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span>Download CV</span>
+                        <svg class="cv-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6,9 12,15 18,9" />
+                        </svg>
+                    </button>
+                    <div class="cv-dropdown-menu" id="cvDropdownMenu">
+                        <a href="cv_en.pdf" download class="cv-dropdown-item">
+                            <span>&#127468;&#127463;</span><span>English</span>
+                        </a>
+                        <a href="cv_sv.pdf" download class="cv-dropdown-item">
+                            <span>&#127480;&#127466;</span><span>Swedish</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="hero-stats animate-in">
                 <div class="stat"><span class="stat-number">4+</span><span class="stat-label">ML Projects</span></div>
