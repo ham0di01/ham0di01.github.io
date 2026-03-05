@@ -529,7 +529,7 @@ img {
 
 .about-image-frame {
     position: relative;
-    border-radius: var(--radius);
+    border-radius: 50%;
     overflow: hidden;
     aspect-ratio: 1;
     border: 1px solid var(--border);
@@ -540,12 +540,10 @@ img {
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
-    filter: grayscale(0.3);
 }
 
 .about-image-frame:hover .about-image {
     transform: scale(1.04);
-    filter: grayscale(0);
 }
 
 .about-location {
